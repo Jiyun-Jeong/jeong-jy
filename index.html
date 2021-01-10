@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +18,32 @@
   <script src="assets/js/swiper.min.js"></script>
   <!-- Custom JS -->
   <script src="assets/js/main.js"></script>
-</head>
+  <script>
+    $(document).ready(function() {
+      //cnt4 "droppable"
+      $('#drag1Yes,  #drag2Yes').draggable({
+          revert: 'invalid'
+        });
 
+      //드래그를 수락해주는 대상
+    $('#drop1').droppable({
+          accept : '#drag1Yes',        //수락해줄 대상을 지정
+          drop : function () {        //drop이 완료된 후 실행할 실행문
+              $(this).fadeOut().next().text('80%');
+              $('#drag1Yes').hide();
+          }
+      });
+    $('#drop2').droppable({
+          accept : '#drag2Yes',        //수락해줄 대상을 지정
+          drop : function () {        //drop이 완료된 후 실행할 실행문
+              $(this).fadeOut().next().text('80%');
+              $('#drag2Yes').hide();
+          }
+      });
+    });
+  </script>
+</head>
+  
 <body>
   <div id="skip">
     <a href="#cnt1">본문 바로가기</a>
@@ -95,7 +118,7 @@
         </div>
       </div>
       <span>JIYUN<br>JEONG</span>
-      <p>I'm the one<br>who are you looking for! &nbsp; &nbsp; </p> <!-- 들여쓰기 추가 -->
+      <p>I'm the one<br>who are you looking for! &nbsp; &nbsp; </p>
       <div class="decorate">
         <img class="sunflower" src="assets/img/main/sunflower@2x.png" alt="해바라기">
         <img class="yellowCircle" src="assets/img/main/cnt1Circle.png" alt="노란 동그라미">
@@ -137,7 +160,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <!-- slide1 -->
-          <div class="swiper-slide slide1">
+          <div class="swiper-slide slide1 slide">
             <h2 class="blind-b">호주에서 시작된 미래에 대한 고민</h2>
             <div class="data">
               <img src="assets/img/main/smile1.png" alt="빨간색 스마일 아이콘">
@@ -176,7 +199,7 @@
             </div>
           </div>
           <!-- slide2 -->
-          <div class="swiper-slide slide2">
+          <div class="swiper-slide slide2 slide">
             <h2 class="blind-b">한국으로 돌아와서 첫 코딩의 시작</h2>
             <div class="data">
               <img src="assets/img/main/smile2.png" alt="핑크색 스마일 아이콘">
@@ -201,17 +224,28 @@
                 </p>
                 <span>02</span>
               </div>
-              <img src="assets/img/main/blogDiary.png" alt="uxui 수강 블로그 다이어리" class="diaryImg">
+              <div class="diaryDeco">
+                <img class="diaryImg" src="assets/img/main/blogDiary@2x.png" alt="uxui 수강 블로그 다이어리" >
+                <img class="decoTape1" src="assets/img/main/Washitape_pastelpink@2x.png" alt="우측 상단 마스킹 테이프">
+                <img class="decoTape2" src="assets/img/main/Washitape_pastelpink@2x.png" alt="좌측 하단 마스킹 테이프">
+                <img class="drawnArrow" src="assets/img/main/drawnArrow@2x.png" alt="손그림 화살표">
+                <img class="handwrite" src="assets/img/main/diary@2x.png" alt="손글씨">
+              </div>
             </div>
           </div>
           <!-- slide3 -->
-          <div class="swiper-slide slide3">
+          <div class="swiper-slide slide3 slide">
             <h2 class="blind-b">6개월 간 코딩수업을 듣고</h2>
             <div class="data">
               <img src="assets/img/main/smile3.png" alt="초록색 스마일 아이콘">
               <p>~ Jan 2021</p>
             </div>
             <div class="thirdDiary">
+              <div class="viewWorksWrap">
+                <button type="button">
+                  View Works
+                </button>
+              </div>
               <div class="diary right">
                 <strong>6개월 간의 코딩열차 탑승</strong>
                 <p>첫 수업을 시작으로,<br>
@@ -221,9 +255,10 @@
                   지금까지 오게 되었습니다.<br>
                   </br>
                   앞으로 그간의 배움을 바탕으로<br>
-                  <span>미래의 도전이 두렵기보다<br>
-                    더욱 많은 배움에 설레하는<br>
-                    사람이 되고자 합니다.</span></p>
+                <strong class="bold">
+                  미래의 도전이 두렵기보다<br>
+                  더욱 많은 배움에 설레하는<br>
+                  사람이 되고자 합니다.</strong>
                 <span>03</span>
               </div>
             </div>
@@ -232,16 +267,15 @@
             </div>
           </div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="swiper-controller">
-        <!-- fraction type -->
-        <div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"><img src="" alt="이전 슬라이더 보기"></div>
-        <div class="swiper-button-next"><img src="" alt="다음 슬라이더 보기"></div>
+        <div class="swiper-controller">
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+  
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"><img src="" alt="이전 슬라이더 보기"></div>
+          <div class="swiper-button-next"><img src="" alt="다음 슬라이더 보기"></div>
+        </div>
       </div>
     </section>
     <!-- stats section -->
@@ -271,6 +305,8 @@
               <p>Now you can tell<br>you know about me!</p>
             </div>
           </div>
+        </div>
+        <div class="middleBoard">
           <div class="efficiency">
             <span>Time<br>efficiency</span>
             <img id="drop1" src="assets/img/main/triangle@2x.png" alt="피라미드">
@@ -278,7 +314,7 @@
           </div>
           <div class="producitivity">
             <span>Daily<br>producitivity</span>
-            <img id="drop2" src="assets/img/main/thunder.png" alt="번개모양">
+            <img id="drop2" src="assets/img/main/cleanThunder.png" alt="번개모양">
             <p>9</p>
             <p>18</p>
           </div>
@@ -298,13 +334,13 @@
           <!-- drop models -->
           <div class="droppableModel">
             <div class="Triangle">
-              <img id="drag1Yes" src="assets/img/main/triangle.png" alt="옮겨다 놓을 피라미드">
+              <img id="drag1Yes" src="assets/img/main/triangle@2x.png" alt="옮겨다 놓을 피라미드">
               <!-- 드롭한 뒤 채워지는 가상요소만들기 -->
               <p>85%</p>
             </div>
             <div class="thunder">
-              <img id="drag2Yes" src="assets/img/main/thunder.png" alt="옮겨다 놓을 번개모양">
-              <!-- 드롭한 뒤 채워지는 가상요소만들기 -->
+              <img id="drag2Yes" src="assets/img/main/cleanThunder.png" alt="옮겨다 놓을 번개모양">
+              <img id="drag2After" src="assets/img/main/pinkthunder.png" alt="옮긴 뒤 도트 무늬로 변환되는 번개모양">
             </div>
           </div>
         </div>
@@ -394,6 +430,115 @@
         </div>
       </div>
     </section>
+
+    <!-- work section -->
+    <section class="section" id="work" role="main">
+      <div class="gopro">
+        <h2 class="blind-b">고프로 포트폴리오</h2>
+        <div class="workSwiperWrap">
+          <!-- work1 section -->
+          <div class="workText left" id="work1Text">
+            <h3>GoPro Responsive web project</h3>
+            <p>
+              액션카메라 브랜드 'GoPro'의 홈페이지를<br>
+              반응형으로 퍼블리싱&리디자인한<br>
+              개인 프로젝트입니다.
+            </p>
+            <a href="https://jiyun-jeong.github.io/project3/index.html" role="button">
+              Check the site
+            </a>
+          </div>
+          <div class="workSwiper work1Swiper">
+            <a href="gopro.html"></a>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="" alt="">
+                  </div>
+                </div>
+              
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+        </div>
+        <div class="decoCircles">
+          <img src="../assets/img/main/worksCircle1@2x.png" alt="데코용 타원">
+          <img src="../assets/img/main/worksCircle2@2x.png" alt="데코용 작은 타원">
+          <img src="../assets/img/main/worksCircle2@2x.png" alt="데코용 작은 타원">
+        </div>
+      </div>
+
+      <!-- work2 section -->
+      <div class="helinox">
+        <h2 class="blind-b">헬리녹스 포트폴리오</h2>
+        <div class="workSwiperWrap">
+          <div class="workText right" id="work2Text">
+            <h3>Helinox Mobile web project</h3>
+            <p>
+              국내 캠핑브랜드 'Helinox'의 홈페이지를<br>
+              모바일 웹 페이지로 퍼블리싱&리디자인한<br>
+              개인 프로젝트입니다.
+            </p>
+            <a href="https://jiyun-jeong.github.io/project2/" role="button">
+              Check the site
+            </a>
+          </div>
+      </div>
+        <div class="work2Swiper workSwiper">
+          <!-- Swiper -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">Slide 1</div>
+              <div class="swiper-slide">Slide 2</div>
+              <div class="swiper-slide">Slide 3</div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- work3 section -->
+      <div class="heyri">
+        <h2 class="blind-b">헤이리 세라믹 아트센터 포트폴리오</h2>
+        <div class="workSwiperWrap">
+          <div class="workText left" id="work3Text">
+            <h3>Heyri Ceramic Art Center project</h3>
+            <p>
+              파주 '헤이리 도자기 체험학교'의 기존 홈페이지를<br>
+              퍼블리싱 & 리디자인한 팀프로젝트입니다.
+            </p>
+            <a href="https://jiyun-jeong.github.io/project/" role="button">
+              Check the site
+            </a>
+          </div>
+          <div class="work3Swiper workSwiper">
+            <!-- Swiper -->
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+              </div>
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- footer section -->
     <footer id="footer">
       <div class="contact">
